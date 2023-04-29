@@ -398,3 +398,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /API/skinet.db
+/API/skinet.db-wal
+/API/skinet.db-shm
