@@ -26,6 +26,22 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+var loggerFactory = app.Services.GetRequiredService<ILoggerFactory>();
+using (var scope = app.Services.CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+    try
+    {
+        var context = serviceProvider.GetRequiredService<StoreContext>();
+        await context.Database.MigrateAsync();
+    }
+    catch (Exception ex)
+    {
+        var logger = loggerFactory.CreateLogger<Program>();
+        logger.LogError(ex, "An error occured during migration");
+    }
+}
+
 app.UseHttpsRedirection();
 
 app.UseRouting();
