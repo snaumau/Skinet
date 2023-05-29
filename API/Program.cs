@@ -46,6 +46,8 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+app.UseStatusCodePagesWithReExecute("/errors/{0}");
+
 app.UseHttpsRedirection();
 
 app.UseRouting();
