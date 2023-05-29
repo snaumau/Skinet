@@ -32,7 +32,7 @@ namespace API.Controllers
             return Ok(products);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(id);
