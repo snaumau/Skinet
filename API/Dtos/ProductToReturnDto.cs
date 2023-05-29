@@ -1,8 +1,6 @@
-﻿using Core.Entities;
-
-namespace API.Dtos
+﻿namespace API.Dtos
 {
-    public class ProductToReturnDto
+    public record ProductToReturnDto
     {
         public int Id { get; set; }
 
