@@ -19,5 +19,13 @@
         public int? TypeId { get; set;}
 
         public string Sort { get; set; } = string.Empty;
+
+        private string _search = string.Empty;
+
+        public string Search
+        {
+            get => _search;
+            set => _search = value.ToLower();
+        }
     }
 }
