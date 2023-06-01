@@ -40,7 +40,7 @@ namespace API.Controllers
             return BadRequest(new ApiResponse(400));
         }
 
-        [HttpGet("badrequest/{id}")]
+        [HttpGet("badrequest/{id:int}")]
         public ActionResult GetNotFoundRequest(int id)
         {
             return Ok();

@@ -16,6 +16,6 @@
 
         public int Count { get; set; }
 
-        public IReadOnlyList<T> Data { get; set; } = new List<T>();
+        public IReadOnlyList<T> Data { get; set; }
     }
 }
