@@ -45,13 +45,13 @@
 
         <form class="row g-3">
           <div class="col-auto">
-            <input type="text" class="form-control" placeholder="Search">
+            <input (keyup.enter)="onSearch($event)" type="text" class="form-control" #search placeholder="Search">
           </div>
           <div class="col-auto">
-            <button class="btn btn-outline-primary mb-3">Search</button>
+            <button (click)="onSearch($event)" class="btn btn-outline-primary mb-3">Search</button>
           </div>
           <div class="col-auto">
-            <button class="btn btn-outline-success mb-3">Reset</button>
+            <button (click)="onReset($event)" class="btn btn-outline-success mb-3">Reset</button>
           </div>
         </form>
       </div>
