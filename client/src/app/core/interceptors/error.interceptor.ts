@@ -6,7 +6,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import {catchError, Observable, throwError} from 'rxjs';
-import { Router } from "@angular/router";
+import {NavigationExtras, Router} from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 
 @Injectable()
@@ -33,7 +33,8 @@ export class ErrorInterceptor implements HttpInterceptor {
               this.route.navigateByUrl('/not-found');
               break;
             case 500:
-              this.route.navigateByUrl('/server-error');
+              const navigationExtras: NavigationExtras = {state: {error: error.error}};
+              this.route.navigateByUrl('/server-error', navigationExtras);
               break;
           }
         }
