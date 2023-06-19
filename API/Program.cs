@@ -24,7 +24,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<StoreContext>(options => options.UseSqlite(connectionString));
 
 var redisConnectionString = builder.Configuration.GetConnectionString("Redis");
-builder.Services.AddSingleton<ConnectionMultiplexer>(c =>
+builder.Services.AddSingleton<IConnectionMultiplexer>(c =>
 {
     var configuration = ConfigurationOptions.Parse(redisConnectionString!, true);
     return ConnectionMultiplexer.Connect(configuration);

@@ -1,6 +1,6 @@
 namespace Core.Entities;
 
-public abstract class BasketItem
+public class BasketItem
 {
     public int Id { get; set; }
 
