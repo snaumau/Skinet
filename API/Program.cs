@@ -31,13 +31,13 @@ var identityConnectionString = builder.Configuration.GetConnectionString("Identi
 builder.Services.AddDbContext<AppIdentityDbContext>(x => x.UseSqlite(identityConnectionString));
 
 var redisConnectionString = builder.Configuration.GetConnectionString("Redis");
-builder.Services.AddSingleton<IConnectionMultiplexer>(c =>
+builder.Services.AddSingleton<IConnectionMultiplexer>(_ =>
 {
     var configuration = ConfigurationOptions.Parse(redisConnectionString!, true);
     return ConnectionMultiplexer.Connect(configuration);
 });
 
-builder.Services.AddIdentityServices();
+builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
